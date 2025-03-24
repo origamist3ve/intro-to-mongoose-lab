@@ -6,13 +6,11 @@ import Customer from "./customers.js";
 import promptSync from 'prompt-sync';
 
 
-
 const prompt = promptSync();
 const username = prompt('What is your name? ');
 
 console.log(`Welcome ${username}`);
 
-let customers = [];
 
 // Function to display the menu
 const displayMenu = async () => {
@@ -75,16 +73,26 @@ const updateCustomer = async () => {
 
 
 const deleteCustomer = async () => {
-    const customerIndex = await prompt("Enter customer id to delete: ");
+    console.log("Below is a list of customers:");
     const customers = await Customer.find();
-    if (customerIndex >= 1 && customerIndex <= customers.length) {
-        const deletedCustomer = customers[customerIndex - 1];
-        await Customer.deleteOne({ _id: deletedCustomer._id });
-        console.log(`Customer ${deletedCustomer.name} has been deleted.`);
-    } else {
-        console.log("Invalid customer id.");
+
+    customers.forEach((customer) => {
+        console.log(`id: ${customer._id} -- Name: ${customer.name}, Age: ${customer.age}`);
+    });
+
+    const customerId = await prompt("Enter customer id to delete: ");
+
+    const customer = await Customer.findById(customerId);
+
+    if (!customer) {
+        console.log("Customer not found. Please enter a valid ID.");
+        return;
     }
+
+    await Customer.deleteOne({ _id: customerId });
+    console.log(`Customer ${customer.name} has been deleted.`);
 };
+
 
 const run = async () => {
     let isRunning = true;
