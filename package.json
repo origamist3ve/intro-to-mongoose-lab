@@ -1,0 +1,27 @@
+{
+  "name": "intro-to-mongoose-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "customers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/origamist3ve/intro-to-mongoose-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/origamist3ve/intro-to-mongoose-lab/issues"
+  },
+  "homepage": "https://github.com/origamist3ve/intro-to-mongoose-lab#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.12.2",
+    "prompt-sync": "^4.2.0"
+  },
+  "type": "module"
+}
